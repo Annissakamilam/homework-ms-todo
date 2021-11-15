@@ -15,6 +15,10 @@ class CreateListsTable extends Migration
     {
         Schema::create('lists', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('color_id')->constrained();
+            $table->foreignId('user_id')->constrained();
+            $table->string('name');
+            $table->string('password');
             $table->timestamps();
         });
     }

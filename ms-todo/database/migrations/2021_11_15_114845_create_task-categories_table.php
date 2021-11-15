@@ -13,7 +13,12 @@ class CreateTaskCategoriesTable extends Migration
      */
     public function up()
     {
-        //
+        Schema::create('task_categories', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('task_id')->constrained('tasks');
+            $table->foreignId('category_id')->constrained('categories');
+            $table->timestamps();
+        });
     }
 
     /**
@@ -23,6 +28,6 @@ class CreateTaskCategoriesTable extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('task_categories');
     }
 }
